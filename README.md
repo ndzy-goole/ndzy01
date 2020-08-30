@@ -24,4 +24,14 @@ yarn add antd @ant-design/icons
 
 # 加入路由的支持
 
-yarn add react-router-dom @types/react-router-dom react-router
+yarn add react-router-dom react-router
+yarn add @types/react-router-dom -D
+
+# redux
+
+yarn add redux react-redux redux-promise redux-logger redux-actions
+yarn add @types/react-redux @types/redux-promise @types/redux-logger @types/redux-actions -D
+
+# tailwindcss
+
+yarn add tailwindcss postcss-cli autoprefixer -D
