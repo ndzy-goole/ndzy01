@@ -1,14 +1,16 @@
 import { combineReducers, createStore, applyMiddleware, Store } from 'redux';
 import promiseMiddleware from 'redux-promise';
 import { createLogger } from 'redux-logger';
+
+import { authInfoReducer as authInfo } from './authInfo';
+
 import openKeys from './openKeys';
 import selectedKeys from './selectKeys';
 import breadcrumb from './breadcrumb';
 import collapsed from './collapsed';
-import authInfo from './authInfo';
 
-import { getSession } from '../utils';
-import { HISTORY_KEY } from '../constant';
+import { getSession } from '@_u/index';
+import { HISTORY_KEY } from '@/constant';
 import cacheData from './middleware/cacheData';
 
 export interface MyStore extends Store {
@@ -43,10 +45,39 @@ let initState;
 
 const state = getSession(HISTORY_KEY);
 if (state) {
+  console.log('11111111111');
   initState = state[0].state;
+} else {
+  console.log('2222 ');
+
+  initState = {
+    openKeys: [],
+    selectedKeys: [],
+    breadcrumb: [],
+    authInfo: [],
+    collapsed: false
+  };
 }
 
 //  window.STATE_FROM_SERVER 可以有第二个参数,表示 State 的最初状态。这通常是服务器给出的。
-const store = createStore(reducer, initState, applyMiddleware(...middlewares));
+export const store = createStore(
+  reducer,
+  initState,
+  applyMiddleware(...middlewares)
+);
 
-export default store;
+export { setAuthInfo, clearAuthInfoStore } from './authInfo/authInfo.redux';
+export {
+  changeBreadcrumb,
+  resetBreadcrumb,
+  clearBreadcrumbStore
+} from './breadcrumb/breadcrumb.redux';
+export {
+  changeCollapsed,
+  clearCollapsedStore
+} from './collapsed/collapsed.redux';
+export { setOpenKeys, clearOpenKeysStore } from './openKeys/openKeys.redux';
+export {
+  setSelectKeys,
+  clearSelectKeysStore
+} from './selectKeys/selectKeys.redux';

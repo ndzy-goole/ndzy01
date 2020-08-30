@@ -2,8 +2,8 @@ import moment from 'moment';
 import { message } from 'antd';
 import * as Redux from 'redux';
 
-import { HISTORY_KEY } from '../../constant';
-import { setSession, getSession } from '../../utils';
+import { HISTORY_KEY } from '@/constant';
+import { setSession, getSession } from '@_u/index';
 
 // 缓存数据中间件
 export default function cacheData(store: Redux.Store) {

@@ -1,2 +1,1 @@
-import authInfoReducer from './authInfo.redux';
-export default authInfoReducer;
+export { authInfoReducer } from './authInfo.redux';

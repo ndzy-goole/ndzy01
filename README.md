@@ -35,3 +35,16 @@ yarn add @types/react-redux @types/redux-promise @types/redux-logger @types/redu
 # tailwindcss
 
 yarn add tailwindcss postcss-cli autoprefixer -D
+
+# underscore
+
+yarn add underscore
+yarn add @types/underscore -D
+
+# ahooks
+yarn add ahooks
+yarn add @types/ahooks -D
+
+# perfect-scrollbar
+yarn add perfect-scrollbar
+yarn add @types/perfect-scrollbar -D
