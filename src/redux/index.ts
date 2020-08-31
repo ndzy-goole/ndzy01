@@ -21,7 +21,7 @@ export interface MyStore extends Store {
   authInfo: { [propsName: string]: any }[];
 }
 
-const middlewares = [];
+const middlewares: any = [];
 middlewares.push(promiseMiddleware);
 middlewares.push(cacheData as any);
 if (process.env.NODE_ENV === 'development') {
@@ -41,30 +41,25 @@ const reducer = combineReducers({
   collapsed,
   authInfo
 });
-let initState;
 
-if (getSession(HISTORY_KEY)) {
-  console.log('11111111111');
-  initState = getSession(HISTORY_KEY)[0].state;
-} else {
-  console.log('2222 ');
+export function configStore() {
+  const state = getSession(HISTORY_KEY);
+  let initState = {};
 
-  initState = {
-    openKeys: [],
-    selectedKeys: [],
-    breadcrumb: [],
-    authInfo: [],
-    collapsed: false
-  };
+  if (state) {
+    initState = state[0].state;
+  }
+  //  window.STATE_FROM_SERVER 可以有第二个参数,表示 State 的最初状态。这通常是服务器给出的。
+  const store = createStore(
+    reducer,
+    initState,
+    applyMiddleware(...middlewares)
+  );
+
+  return store;
 }
 
-//  window.STATE_FROM_SERVER 可以有第二个参数,表示 State 的最初状态。这通常是服务器给出的。
-export const store = createStore(
-  reducer,
-  initState,
-  applyMiddleware(...middlewares)
-);
-
+//#region action
 export { setAuthInfo, clearAuthInfoStore } from './authInfo/authInfo.redux';
 export {
   changeBreadcrumb,
@@ -80,3 +75,4 @@ export {
   setSelectKeys,
   clearSelectKeysStore
 } from './selectKeys/selectKeys.redux';
+//#endregion

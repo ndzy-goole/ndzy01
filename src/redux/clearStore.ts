@@ -1,5 +1,5 @@
 import {
-  store,
+  configStore,
   clearAuthInfoStore,
   clearBreadcrumbStore,
   clearCollapsedStore,
@@ -10,10 +10,10 @@ import { HISTORY_KEY } from '@/constant';
 import { removStorage } from '@_u/index';
 
 export function clearStore() {
-  store.dispatch(clearAuthInfoStore());
-  store.dispatch(clearBreadcrumbStore());
-  store.dispatch(clearCollapsedStore());
-  store.dispatch(clearOpenKeysStore());
-  store.dispatch(clearSelectKeysStore());
+  configStore().dispatch(clearAuthInfoStore());
+  configStore().dispatch(clearBreadcrumbStore());
+  configStore().dispatch(clearCollapsedStore());
+  configStore().dispatch(clearOpenKeysStore());
+  configStore().dispatch(clearSelectKeysStore());
   removStorage(HISTORY_KEY);
 }
