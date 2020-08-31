@@ -14,6 +14,8 @@ const breadcrumb: BreadcrumbStore[] = [];
 
 const breadcrumbAction = createActions({
   [CHANGE_BREADCRUMB]: (breadcrums: BreadcrumbStore[]) => {
+    console.log(breadcrums);
+
     return breadcrums;
   },
   [RESET_BREADCRUMB]: (breadcrums: BreadcrumbStore[]) => {
@@ -30,8 +32,10 @@ export const clearBreadcrumbStore = breadcrumbAction.clearBreadcrumbStore;
 
 const breadcrumbReducer = handleActions(
   {
-    [CHANGE_BREADCRUMB]: (state: BreadcrumbStore[], action: any) =>
-      action.payload.length > 0 ? [...state, ...action.payload] : state,
+    [CHANGE_BREADCRUMB]: (state: BreadcrumbStore[], action: any) => [
+      ...state,
+      action.payload
+    ],
     [RESET_BREADCRUMB]: (state: BreadcrumbStore[], action) => action.payload,
     [CLEAR_BREADCRUMB_STORE]: (state: BreadcrumbStore[], action) =>
       action.payload

@@ -2,15 +2,17 @@ import React from 'react';
 import { RouteChildrenProps } from 'react-router-dom';
 import { Button } from 'antd';
 import { useMount } from 'ahooks';
+import { connect, DispatchProp } from 'react-redux';
 
-interface Props extends RouteChildrenProps {
+interface Props extends RouteChildrenProps, DispatchProp {
   // 设置面包屑 有两种形式
   setBreadcrumb: (data: { path?: string; name: string }[] | string) => void;
   setAuthInfo: (authInfo: any) => void;
   clearStore: () => void;
 }
 
-export default (props: Props) => {
+const Login = (props: Props) => {
+  console.log(props);
   const handleLogin = () => {
     const authInfo = [{ auth: '张一', name: '页面1' }];
     const path = '/A/page1';
@@ -32,3 +34,5 @@ export default (props: Props) => {
     </div>
   );
 };
+
+export default connect()(Login);

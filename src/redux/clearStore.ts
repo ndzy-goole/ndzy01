@@ -2,7 +2,7 @@ import {
   store,
   clearAuthInfoStore,
   clearBreadcrumbStore,
-  changeCollapsed,
+  clearCollapsedStore,
   clearOpenKeysStore,
   clearSelectKeysStore
 } from './index';
@@ -12,7 +12,7 @@ import { removStorage } from '@_u/index';
 export function clearStore() {
   store.dispatch(clearAuthInfoStore());
   store.dispatch(clearBreadcrumbStore());
-  store.dispatch(changeCollapsed());
+  store.dispatch(clearCollapsedStore());
   store.dispatch(clearOpenKeysStore());
   store.dispatch(clearSelectKeysStore());
   removStorage(HISTORY_KEY);

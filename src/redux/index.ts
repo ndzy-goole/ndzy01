@@ -43,10 +43,9 @@ const reducer = combineReducers({
 });
 let initState;
 
-const state = getSession(HISTORY_KEY);
-if (state) {
+if (getSession(HISTORY_KEY)) {
   console.log('11111111111');
-  initState = state[0].state;
+  initState = getSession(HISTORY_KEY)[0].state;
 } else {
   console.log('2222 ');
 
