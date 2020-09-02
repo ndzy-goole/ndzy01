@@ -82,7 +82,7 @@ const appConfig = {
 const menuRouter = [
   {
     path: '/A/page1',
-    auth: '张一',
+    auth: '',
     component: PageA1,
     parent: '/A',
     title: '可编辑table',

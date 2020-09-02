@@ -12,13 +12,12 @@ interface Props extends RouteChildrenProps, DispatchProp {
 }
 
 const Login = (props: Props) => {
-  console.log(props);
   const handleLogin = () => {
-    const authInfo = [{ auth: '张一', name: '页面1' }];
+    const authInfo = [{ auth: '张一', name: '111' }];
     const path = '/A/page1';
-    props.history.push(path);
-    // props.setBreadcrumb(path);
+    props.setBreadcrumb(path);
     props.setAuthInfo(authInfo);
+    props.history.push(path);
   };
   useMount(() => {});
   return (

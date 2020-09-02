@@ -14,8 +14,6 @@ const breadcrumb: BreadcrumbStore[] = [];
 
 const breadcrumbAction = createActions({
   [CHANGE_BREADCRUMB]: (breadcrums: BreadcrumbStore[]) => {
-    console.log(breadcrums);
-
     return breadcrums;
   },
   [RESET_BREADCRUMB]: (breadcrums: BreadcrumbStore[]) => {

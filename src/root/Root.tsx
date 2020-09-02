@@ -18,6 +18,7 @@ import { clearStore } from '@/redux/clearStore';
 
 import { ActionFunctionAny } from 'redux-actions';
 import { Action } from 'redux';
+import * as _ from 'lodash';
 
 const history = {
   browser: historyBrowser,
@@ -43,6 +44,7 @@ export interface RootProps {
 
 const mapStateToProps = (store: MyStore) => {
   const { authInfo, collapsed, breadcrumb } = store;
+  console.log('store', store);
   return {
     authInfo,
     collapsed,
@@ -64,6 +66,7 @@ export const Root = connect(mapStateToProps, {
   const handleSetBreadcrumb = (
     data: { path?: string; name: string }[] | string
   ) => {
+    const deepMenuRouter = _.cloneDeep(menuRouter);
     if (isArray(data)) {
       props.resetBreadcrumb && props.resetBreadcrumb(data);
       return;
@@ -74,9 +77,9 @@ export const Root = connect(mapStateToProps, {
     });
 
     // tab形式的面包屑需要同步设置selectKeys
-    let openKey = '';
+    let openKey: string[] = [];
 
-    menuRouter.forEach((item) => {
+    deepMenuRouter.forEach((item) => {
       if (data.split('?')[0] === item.path) {
         if (!pathInfo) {
           props.changeBreadcrumb &&
@@ -84,12 +87,14 @@ export const Root = connect(mapStateToProps, {
         }
         props.setSelectKeys && props.setSelectKeys([data]);
       } else if (data.includes(item.parent)) {
-        openKey = item.parent;
+        openKey.push(item.parent);
       }
     });
 
+    openKey = _.uniq(openKey).filter((item) => item !== '');
+
     if (!props.collapsed) {
-      props.setOpenKeys && props.setOpenKeys([openKey]);
+      props.setOpenKeys && props.setOpenKeys(openKey);
     }
   };
   return (

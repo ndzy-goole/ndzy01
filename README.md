@@ -38,8 +38,8 @@ yarn add tailwindcss postcss-cli autoprefixer -D
 
 # underscore
 
-yarn add underscore
-yarn add @types/underscore -D
+yarn add underscore lodash
+yarn add @types/underscore @types/lodash -D
 
 # ahooks
 yarn add ahooks
