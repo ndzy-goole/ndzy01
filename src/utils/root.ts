@@ -1,5 +1,5 @@
 import { menuRouter } from '@/root';
-import { changeBreadcrumb, store } from '@/redux';
+import { changeBreadcrumb, setAuth, store } from '@/redux';
 /**
  * @description 获取打开的菜单
  * @param path
@@ -21,4 +21,8 @@ export function getOpenKeysG(path: string) {
 
 export function test(test: any) {
   store.dispatch(changeBreadcrumb(test));
+}
+
+export function test1(test: any) {
+  store.dispatch(setAuth(test));
 }

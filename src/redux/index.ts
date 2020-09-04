@@ -42,23 +42,6 @@ const reducer = combineReducers({
   authInfo
 });
 
-// export function configStore() {
-//   const state = getSession(HISTORY_KEY);
-//   let initState = {};
-
-//   if (state) {
-//     initState = state[0].state;
-//   }
-//   //  window.STATE_FROM_SERVER 可以有第二个参数,表示 State 的最初状态。这通常是服务器给出的。
-//   const store = createStore(
-//     reducer,
-//     initState,
-//     applyMiddleware(...middlewares)
-//   );
-
-//   return store;
-// }
-
 //#region 初始化 store
 const state = getSession(HISTORY_KEY);
 let initState = {};
@@ -75,7 +58,7 @@ export const store = createStore(
 //#endregion
 
 //#region action
-export { setAuthInfo, clearAuthInfoStore } from './authInfo/authInfo.redux';
+export { setAuth, clearAuthInfoStore } from './authInfo/authInfo.redux';
 export {
   changeBreadcrumb,
   resetBreadcrumb,

@@ -1,5 +1,5 @@
 // authInfo
-const SET_AUTH_INFO = 'SET_AUTH_INFO';
+const SET_AUTH = 'SET_AUTH';
 const CLEAR_AUTH_INFO_STORE = 'CLEAR_AUTH_INFO_STORE';
 // breadcrumb
 const CHANGE_BREADCRUMB = 'CHANGE_BREADCRUMB';
@@ -20,7 +20,7 @@ const CLEAR_SELECT_KEYS_STORE = 'CLEAR_SELECT_KEYS_STORE';
 
 export {
   // authInfo
-  SET_AUTH_INFO,
+  SET_AUTH,
   CLEAR_AUTH_INFO_STORE,
   // breadcrumb
   CHANGE_BREADCRUMB,

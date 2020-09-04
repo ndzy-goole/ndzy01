@@ -6,7 +6,7 @@ import Frame from './Frame';
 import { historyBrowser, historyHash, hasAuth } from '@_u/index';
 import { menuRouter, fullScreenRouter, errRouter } from './router';
 import {
-  setAuthInfo,
+  setAuth,
   changeBreadcrumb,
   resetBreadcrumb,
   setOpenKeys,
@@ -35,7 +35,7 @@ export interface RootProps {
   authInfo: any[];
   collapsed: boolean;
   breadcrumb: any[];
-  setAuthInfo?: ActionFunctionAny<Action<any>>;
+  setAuth?: ActionFunctionAny<Action<any>>;
   resetBreadcrumb?: ActionFunctionAny<Action<any>>;
   changeBreadcrumb?: ActionFunctionAny<Action<any>>;
   setSelectKeys?: ActionFunctionAny<Action<any>>;
@@ -45,6 +45,7 @@ export interface RootProps {
 const mapStateToProps = (store: MyStore) => {
   const { authInfo, collapsed, breadcrumb } = store;
   console.log('store', store);
+  console.log('breadcrumb', breadcrumb);
   return {
     authInfo,
     collapsed,
@@ -54,7 +55,7 @@ const mapStateToProps = (store: MyStore) => {
 
 export const Root = connect(mapStateToProps, {
   resetBreadcrumb,
-  setAuthInfo,
+  setAuth,
   changeBreadcrumb,
   setSelectKeys,
   setOpenKeys
@@ -125,7 +126,7 @@ export const Root = connect(mapStateToProps, {
                         handleSetBreadcrumb(data);
                       }}
                       setAuthInfo={(authInfo: any) => {
-                        props.setAuthInfo && props.setAuthInfo(authInfo);
+                        props.setAuth && props.setAuth(authInfo);
                       }}
                     />
                   </Frame>
@@ -155,7 +156,7 @@ export const Root = connect(mapStateToProps, {
                       handleSetBreadcrumb(data);
                     }}
                     setAuthInfo={(authInfo: any) => {
-                      props.setAuthInfo && props.setAuthInfo(authInfo);
+                      props.setAuth && props.setAuth(authInfo);
                     }}
                   />
                 );
@@ -180,7 +181,7 @@ export const Root = connect(mapStateToProps, {
                   handleSetBreadcrumb(data);
                 }}
                 setAuthInfo={(authInfo: any) => {
-                  props.setAuthInfo && props.setAuthInfo(authInfo);
+                  props.setAuth && props.setAuth(authInfo);
                 }}
               />
             );

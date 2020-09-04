@@ -1,24 +1,24 @@
 import { createActions, handleActions } from 'redux-actions';
-import { SET_AUTH_INFO, CLEAR_AUTH_INFO_STORE } from '../actionTypes';
+import { SET_AUTH, CLEAR_AUTH_INFO_STORE } from '../actionTypes';
 import { AnyObj } from '@/types';
 
 const authInfo: AnyObj[] = [];
 
-const authInfoAction = createActions({
-  [SET_AUTH_INFO]: (authInfo: AnyObj[]) => {
+const actions = createActions({
+  [SET_AUTH]: (authInfo: AnyObj[]) => {
     return authInfo;
   },
   [CLEAR_AUTH_INFO_STORE]: () => {
     return [];
   }
 });
-// console.log(authInfoAction);
-export const setAuthInfo = authInfoAction.setAuthInfo;
-export const clearAuthInfoStore = authInfoAction.clearAuthInfoStore;
+console.log(actions);
+export const setAuth = actions.setAuth;
+export const clearAuthInfoStore = actions.clearAuthInfoStore;
 
 export const authInfoReducer = handleActions(
   {
-    [SET_AUTH_INFO]: (state: AnyObj[], action) => {
+    [SET_AUTH]: (state: AnyObj[], action) => {
       console.log(state, action);
       return action.payload;
     },

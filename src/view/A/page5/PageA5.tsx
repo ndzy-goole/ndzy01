@@ -1,7 +1,7 @@
 import React from 'react';
 import { RouteChildrenProps } from 'react-router-dom';
 import './PageA5.scss';
-import { test } from '@/utils/root';
+import { Collapse1 } from '@_c/antd/collapse';
 import { useMount } from 'ahooks';
 
 interface Props extends RouteChildrenProps {
@@ -11,13 +11,11 @@ interface Props extends RouteChildrenProps {
 }
 
 export default (props: Props) => {
-  useMount(() => {
-    console.log('test----------------------------');
-    test({ path: '/A/page3', name: '页面111' });
-  });
+  useMount(() => {});
   return (
     <div className="ModuleAPage5">
       <h1>页面5</h1>
+      <Collapse1 text={'111111111111111csavdsjv kn'} />
     </div>
   );
 };
